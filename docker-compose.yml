@@ -1,0 +1,14 @@
+services:
+  # Define os serviços que serão executados no Docker Compose
+  app:
+    # Define o serviço para a aplicação, nomeado 'app'
+    build: .
+    # Instrui o Docker Compose a construir a imagem para este serviço a partir do Dockerfile no diretório atual ('.')
+    container_name: api
+    # Define o nome do container como 'api' para facilitar a identificação e gerenciamento
+    ports:
+      # Mapeia a porta 8000 do host para a porta 8000 do container, permitindo acessar a aplicação no host via localhost:8000
+      - "8000:8000"
+    volumes:
+      # Mapeia o diretório atual ('.') do host para o diretório '/app' dentro do container. Isso permite que as alterações no código sejam refletidas no container sem precisar reconstruir a imagem
+      - .:/app
